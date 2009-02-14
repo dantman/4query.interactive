@@ -1,0 +1,99 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0; padding: 0; border: 0; outline: 0;
+	font-size: 100%; vertical-align: baseline; background: transparent;
+}
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+#terminal {
+	position: fixed;
+	bottom: 1%;
+	left: 1%; right: 1%;
+	height: 250px;
+	
+	background: #222;
+	color: #eee;
+	padding: 10px;
+	border: 5px solid #555;
+	
+	/*w3c*/
+	border-radius: 10px;
+	/*moz*/
+	-moz-border-radius: 10px;
+	/*webkit*/
+	-webkit-border-raidus: 10px;
+}
+
+#console {
+	display: block;
+	background: #000;
+	color: #fff;
+	
+	position: absolute;
+	top: 0px; right: 0px; bottom: 0px; left: 0px;
+	
+	margin: 15px;
+	padding: 5px;
+}
+
+#console input {
+	background: #111;
+	color: #0f0;
+	border: none;
+	border-bottom: 1px dotted #070;
+	
+	width: 100%;
+}
+
+#console .result, #console .error { font-size: .8em; }
+
+#console .error {
+	margin: 3px;
+	padding: 2px;
+	
+	background: #ffe;
+	color: #f00;
+	border: 1px solid #444;
+}
+#console .error .message { margin-left: 7px; color: #460; }
+
+#console .string { color: #f00; }
+#console .string > .q { font-weight: bold; }
+
+#console .number { color: #009; }
+#console .number > .min { color: #f00; }
+
+#console .comma { margin-left: 1px; margin-right: 3px; }
+#console .object > .label { margin-right: 3px; color: #4b6; }
+
+#console .b, #console .object .op { color: red; }
+#console .b.l, #console .object > .op.l { margin-right: 2px; }
+#console .b.r, #console .object > .op.r { margin-left: 2px; }
+
+#console .function { color: #6f0; }
+
+#console .frame > .name { margin-right: 5px; }
+#console .frame.jquery { color: #96c; }
+#console .frame.o4query { color: #73C2FB; }
+
+#console .dom > .document { margin-right: 5px; color: #DC143C; }
+#console .dom > .local, #console .dom > .remote { font-style: italic; color: #777; }
+
+#console .dom > .attr { margin-left: 5px; }
+#console .dom > .attr > .eq { color: #777; }
+#console .dom > .attr > .key { color: #228b22; }
+
+#console .empty { font-style: italic; color: #777; }
+#console .cont { font-weight: bold; color: #777; }
