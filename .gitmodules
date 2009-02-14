@@ -1,0 +1,3 @@
+[submodule "4query"]
+	path = 4query
+	url = git://github.com/dantman/4query.git
