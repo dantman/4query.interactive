@@ -14,12 +14,24 @@ $4.fn.extend({
 		form.append(console);
 		$(this).append(form);
 		
-		var inputLine, prompt, stdin;
+		var inputLine, prompt, stdin, history = [], histcount = 0;
 		function pushStdin() {
 			prompt = $('<span class="prompt active"/>')
 				.css({float: 'left', position: 'absolute'})
 				.text(options.prompt);
-			stdin = $('<input type="text"/>');
+			stdin = $('<input type="text"/>').keypress(function(e) {
+				if(history.length == 0) return true;
+				switch(e.keyCode) {// ToDo: Keyboard constants or a method of simplifying keycode stuff
+				case 38: // up
+					if( --histcount < 0 ) histcount = history.length-1;
+					stdin.val(history[histcount]);
+					break;
+				case 40: //down
+					if( ++histcount >= history.length ) histcount = 0;
+					stdin.val(history[histcount]);
+					break;
+				}
+			});
 			inputLine = $('<li/>').append( prompt, stdin );
 			
 			console.append( inputLine );
@@ -159,6 +171,8 @@ $4.fn.extend({
 			evt.preventDefault();
 			var val = stdin.val();
 			if( val ) {
+				histcount = 0;
+				history.push( val );
 				prompt.removeClass('active');
 				$(stdin).replaceWith($('<span/>').css(stdin.css(['background', 'color', 'border', 'paddingLeft', 'fontSize'])).text(val));
 				try { pushResult( window["eval"]('('+val.replace(/;$/,'')+')') ); }
